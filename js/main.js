@@ -28,3 +28,11 @@ const linkAction = () => {
 }
 
 navLink.forEach(n => n.addEventListener('click', linkAction))
+
+/* CHANGE BACKGROUND HEADER */
+function shadowHeader() {
+    const header = document.getElementById('header')
+    if (this.scrollY >= 50) header.classList.add('shadow-header')
+    else header.classList.remove('shadow-header')
+}
+window.addEventListener('scroll', shadowHeader)
