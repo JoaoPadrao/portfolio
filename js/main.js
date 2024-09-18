@@ -36,3 +36,28 @@ function shadowHeader() {
     else header.classList.remove('shadow-header')
 }
 window.addEventListener('scroll', shadowHeader)
+
+/* EMAIL */
+
+const contactForm = document.getElementById('contact-form'),
+    contactMessage = document.getElementById('contact-message')
+
+const sendEmail = (e) => {
+    e.preventDefault()
+
+    emailjs.sendForm('service_d1vsa4g','template_2s53c0b','#contact-form','TeOg9y6B9MtHEeGME').then(() => {
+        contactMessage.textContent = 'Message sent successfully ✅'
+        
+        setTimeout(() => {
+            contactMessage.textContent = ''}, 5000)
+
+        contactForm.reset()
+    }, () => {
+        contactMessage.textContent = 'An error occurred, please try again later ❌'
+
+    }   )
+    
+
+}
+
+contactForm.addEventListener('submit', sendEmail)
