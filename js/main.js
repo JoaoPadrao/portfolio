@@ -61,3 +61,38 @@ const sendEmail = (e) => {
 }
 
 contactForm.addEventListener('submit', sendEmail)
+
+
+/* SHOW SCROLL UP */
+
+const scrollUp = () => {
+    const scrollUp = document.getElementById('scroll-up')
+    if (this.scrollY >= 350) scrollUp.classList.add('show-scroll')
+    else scrollUp.classList.remove('show-scroll')
+}
+
+window.addEventListener('scroll', scrollUp)
+
+/* SCROLL SECTIONS ACTIVE LINK */
+
+const sections = document.querySelectorAll('section[id]')
+
+const scrollActive = () => {
+    const scrollDown = window.scrollY
+
+    sections.forEach(current => {
+        const sectionHeight = current.offsetHeight
+        const sectionTop = current.offsetTop - 58
+        const sectionId = current.getAttribute('id')
+        const sectionClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
+
+        if (scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight) {
+            sectionClass.classList.add('active-link')
+        } else {
+            sectionClass.classList.remove('active-link')
+        }
+    })
+
+}
+
+window.addEventListener('scroll', scrollActive) 
