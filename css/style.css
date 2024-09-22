@@ -61,6 +61,7 @@ body {
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
+  transition: background-color .4s;
 }
 
 h1, h2, h3, h4 {
@@ -155,7 +156,7 @@ img {
   left: 0;
   background-color: var(--body-color);
   z-index: var(--z-fixed);
-  transition: box-shadow .4s;
+  transition: box-shadow .4s, background-color .4s;
 }
 
 .nav {
@@ -942,5 +943,86 @@ img {
 .active-link::after {
   width: 25%;
 }
+
+
+/* THEME */
+
+.nav__buttons {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.change-theme {
+  font-size: 1.25rem;
+  color: var(--title-color);
+  cursor: pointer;
+  transition: color .3s;
+}
+
+/* VARIABLES DARK THEME */
+
+body.dark-theme{
+  --first-color: rgba(7, 189, 221, 0.349);
+  --black-color: hsl(0,0%,18%);
+  --black-color-light: hsl(0,0%,30%);
+  --title-color: hsl(0,0%,95%);
+  --text-color: hsl(0,0%,70%);
+  --body-color: hsl(0,0%,8%);
+  --container-color: hsl(0,0%,12%);
+}
+
+.dark-theme .shadow-header {
+  box-shadow: 0 1px 12px hsla(0,0%,0%,.6);
+}
+
+.dark-theme .section-title-1::after, 
+.dark-theme .section-title-2::after {
+  background-color: hsla(0, 0%, 64%, 0.2);
+}
+
+.dark-theme :is(.home__arrow, .home__lines, .about__line) {
+  filter: invert(0);
+}
+
+.dark-theme .home__description b{
+  background-color: linear-gradient(90deg,
+              hsla(189, 100%, 56%, 0.3),
+              hsla(14, 98%, 50%, 0));
+              
+}
+
+.dark-theme :is(.button__ghost){
+  color: var(--white-color);
+}
+
+.dark-theme .projects__card:hover {
+  background-color: var(--body-color);
+}
+
+.dark-theme .projects {
+  background-color: hsl(0,0%,16%);
+}
+
+.dark-theme :is(.contact__mail, .contact__input, .contact__label){
+  background-color: var(--container-color);
+}
+
+.dark-theme .footer {
+  background-color: hsl(0, 0%, 4%);
+}
+
+.dark-theme::-webkit-scrollbar{
+  background-color: hsl(0,0%,20%);
+}
+
+.dark-theme::-webkit-scrollbar-thumb {
+  background-color: hsl(0,0%,30%);
+}
+
+.dark-theme::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(0,0%,40%);
+}
+
 
 }
