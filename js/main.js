@@ -73,6 +73,38 @@ const scrollUp = () => {
 
 window.addEventListener('scroll', scrollUp)
 
+
+/* SMOOTH SCROLL */
+
+document.getElementById('scroll-up').addEventListener('click', (e) => {
+    e.preventDefault()
+    window.scrollTo({
+        top: 0, 
+        behavior: 'smooth' 
+    })
+})
+
+
+const smoothScroll = (event) => {
+    event.preventDefault() 
+
+    const targetId = event.currentTarget.getAttribute('href') 
+    const targetSection = document.querySelector(targetId)
+
+    if (targetSection) {
+        window.scrollTo({
+            top: targetSection.offsetTop, 
+            behavior: 'smooth'
+        })
+    }
+}
+
+const anchorLinks = document.querySelectorAll('a[href^="#"]')
+
+anchorLinks.forEach(link => {
+    link.addEventListener('click', smoothScroll)
+})
+
 /* SCROLL SECTIONS ACTIVE LINK */
 
 const sections = document.querySelectorAll('section[id]')
